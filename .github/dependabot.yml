@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # One pull request a week for every npm dependency with an update, so that
+  # they are tested together.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      npm-dependencies:
+        patterns: ["*"]

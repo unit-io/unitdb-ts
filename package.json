@@ -1,0 +1,57 @@
+{
+  "name": "@unit-io/unitdb",
+  "version": "0.0.0",
+  "description": "A TypeScript client for the unitdb server: its uTP protocol over TCP or WebSocket, for Node and browsers.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./ws": {
+      "types": "./dist/ws.d.ts",
+      "import": "./dist/ws.js"
+    },
+    "./tcp": {
+      "types": "./dist/tcp.d.ts",
+      "node": "./dist/tcp.js"
+    },
+    "./storage-fs": {
+      "types": "./dist/storage-fs.d.ts",
+      "node": "./dist/storage-fs.js"
+    }
+  },
+  "scripts": {
+    "gen": "node scripts/gen.mjs",
+    "sync": "node scripts/sync.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+    "test": "vitest run",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "ci": "./ci.sh",
+    "e2e": "vitest run --config vitest.e2e.config.ts",
+    "vectors": "node scripts/vectors.mjs"
+  },
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.16.0"
+  },
+  "devDependencies": {
+    "@bufbuild/protoc-gen-es": "^2.16.0",
+    "@types/node": "^22.20.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unit-io/unitdb-ts.git"
+  }
+}
